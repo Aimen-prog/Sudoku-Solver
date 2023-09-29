@@ -1,8 +1,9 @@
 
-README
+Soduku Solver
 ======
 
 **About this repository**
+<br>
 Sudoku Solver using backtracking and brute forcing - LaPlateforme Formation 
 
 
