@@ -4,11 +4,37 @@ from backtracking import Backtracking
 from bruteForce import BruteForce
 
 def file_holder(file_name):
+    """
+    Read a text file, clean its contents, and convert it into a 9x9 NumPy array of integers.
+
+    Parameters:
+    - file_name (str): The name of the text file to read.
+
+    Returns:
+    - numpy.ndarray: A 9x9 NumPy array containing the cleaned and converted data from the file.
+    """
     with open(file_name, 'r') as f:
         file = f.read()
     file = file.replace(' ', '').replace('\n', '').replace('_', "0")
     return (np.array(list(file)).astype(int)).reshape((9, 9))
+
 def benchmark_all_puzzles():
+    """
+    Benchmark the solving time of Sudoku puzzles using different solving methods.
+
+    This function iterates through Sudoku puzzle files in a specified directory, allows the
+    user to choose between Brute Force and Backtracking solvers for each puzzle, and measures
+    the time it takes to solve each puzzle. It then calculates and prints the average execution
+    times for both solving methods.
+
+    Puzzle files in the directory should be named and formatted appropriately for the solvers
+    to work correctly.
+
+    Note: Make sure the 'sudoku_puzzles' directory contains valid puzzle files.
+
+    Returns:
+    - None
+    """
     puzzle_directory = "./sudoku_puzzles"
     puzzle_files = os.listdir(puzzle_directory)
     brute_force_times = []

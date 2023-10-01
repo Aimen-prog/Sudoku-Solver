@@ -7,6 +7,15 @@ import tkinter as tk
 from tkinter import filedialog, simpledialog
 
 def file_holder(file_name):
+    """
+    Read a text file, clean its contents, and convert it into a 9x9 NumPy array of integers.
+
+    Parameters:
+    - file_name (str): The name of the text file to read.
+
+    Returns:
+    - numpy.ndarray: A 9x9 NumPy array containing the cleaned and converted data from the file.
+    """
     with open(file_name, 'r') as f:
         file = f.read()
     file = file.replace(' ', '').replace('\n', '').replace('_', "0")
@@ -14,6 +23,16 @@ def file_holder(file_name):
 
 
 def get_coordinates(grid):
+    """
+    Get the coordinates of non-zero elements in a 2D grid.
+
+    Parameters:
+    - grid (list of lists): The 2D grid to analyze.
+
+    Returns:
+    - list of tuples: A list of tuples containing the (row, column) coordinates
+      of non-zero elements in the grid.
+    """
     coordinates = []
     for i in range(len(grid)):
         for j in range(len(grid[i])):
@@ -36,6 +55,13 @@ pygame.display.set_caption("Sudoku Solver")
 font = pygame.font.Font(None, FONT_SIZE)
 
 def draw_grid(grid, coordinates):
+    """
+    Draw the Sudoku grid on the Pygame window.
+
+    Parameters:
+    - grid (list of lists): The 9x9 Sudoku grid to be drawn.
+    - coordinates (list of tuples): A list of (row, column) coordinates to highlight.
+    """
     window.fill(WHITE)
     for i in range(GRID_SIZE):
         for j in range(GRID_SIZE):
@@ -56,6 +82,9 @@ def draw_grid(grid, coordinates):
     pygame.display.flip()
 
 def brute_or_backtrack():
+    """
+    Prompt the user to choose a solving method (Brute Force or Backtracking).
+    """
     root = tk.Tk()
     root.withdraw()
     choice = simpledialog.askstring("Solving Method", "Enter 1 for the Brute Force solution or 2 for the Backtrack solution:")
@@ -69,11 +98,11 @@ def brute_or_backtrack():
         return None
 
 def execute():
-    # Create a Tkinter root window (it will be hidden)
+    """
+    Main execution function for solving Sudoku puzzles using Pygame.
+    """
     root = tk.Tk()
-    root.withdraw()  # Hide the main root window
-
-    # Use a file dialog to select a file
+    root.withdraw()
     file_name = filedialog.askopenfilename(filetypes=[("Text Files", "*.txt")])
 
     if file_name:

@@ -5,7 +5,19 @@ Soduku Solver
 **About this repository**
 <br>
 Sudoku Solver using backtracking and brute forcing - LaPlateforme Formation 
+<hr>
+Backtracking approach: 
+        Starts by finding the first empty cell in the grid and tries to place numbers
+        from 1 to 9 in that cell while checking if the placement is valid according to
+        Sudoku rules (no duplicates in the same row, column, or 3x3 subgrid). If a valid
+        placement is found, the method recursively attempts to solve the remaining puzzle.
 
+<br>
+Brute Force approach:
+        Iterates through the Sudoku grid, attempting to place numbers from 1 to 9
+        at empty cells while checking if the placement is valid. If a valid placement is found,
+        it continues solving the puzzle recursively.
+<hr>
 
 **Get started**
 
